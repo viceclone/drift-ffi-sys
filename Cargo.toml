@@ -2,6 +2,7 @@
 name = "drift-ffi-sys"
 version = "0.1.0"
 edition = "2021"
+description = "FFI bindings to drift program"
 
 [lib]
 crate-type = ["cdylib"]
@@ -11,7 +12,6 @@ abi_stable = "0.11"
 drift-program = { package = "drift", git = "https://github.com/drift-labs/protocol-v2.git", tag = "v2.93.0", features = [
     "mainnet-beta", "drift-rs"
 ] }
-# pin to whatever version drift-program uses
 hex = "*"
 solana-program = { version = "1.16.*" }
 solana-sdk = { version = "1.16.*" }

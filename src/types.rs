@@ -112,7 +112,7 @@ pub struct OraclePriceData {
 pub type FfiResult<T> = RResult<T, u32>;
 
 pub mod compat {
-    //! ffi compatibility input types
+    //! ffi compatible input types
 
     /// rust 1.76.0 ffi compatible i128
     #[derive(Copy, Clone, Debug, PartialEq)]
