@@ -13,6 +13,5 @@ drift-program = { package = "drift", git = "https://github.com/drift-labs/protoc
     "mainnet-beta", "drift-rs"
 ] }
 hex = "*"
-solana-program = { version = "1.16.*" }
 solana-sdk = { version = "1.16.*" }
 type-layout = "*"

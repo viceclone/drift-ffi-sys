@@ -982,7 +982,6 @@ dependencies = [
  "abi_stable",
  "drift",
  "hex",
- "solana-program",
  "solana-sdk",
  "type-layout",
 ]
