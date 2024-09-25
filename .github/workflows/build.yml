@@ -11,21 +11,17 @@ on:
       - "**.lock"
       - ".github/workflows/*.yml"
 
-env:
- CI_TOOLCHAIN: "1.76.0-x86_64-unknown-linux-gnu"
-
 jobs:
-  publish:
+  publish-linux:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 15
     steps:
       - name: Check out
         uses: actions/checkout@v2
       - name: Install ffi toolchain (1.76.0)
         run: |
-          rustup install $CI_TOOLCHAIN
-          rustup target add x86_64-apple-darwin --toolchain $CI_TOOLCHAIN
-          rustup default $CI_TOOLCHAIN
+          rustup install 1.76.0-x86_64-unknown-linux-gnu
+          rustup default 1.76.0-x86_64-unknown-linux-gnu
       - name: Build Linux
         run: |
           cargo build
@@ -33,10 +29,23 @@ jobs:
         with:
           path: "target/debug/libdrift_ffi_sys.so"
           name: libdrift_ffi_sys.so
+  publish-mac:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+      - name: Install ffi toolchain (1.76.0)
+        run: |
+          rustup install 1.76.0-x86_64-apple-darwin
+          rustup default 1.76.0-x86_64-apple-darwin
+      - name: Build Linux
+        run: |
+          cargo build
       - name: Build Mac
         run: |
-          cargo build --target x86_64-apple-darwin
+          cargo build
       - uses: actions/upload-artifact@v4
         with:
-          path: "target/x86_64-apple-darwin/debug/libdrift_ffi_sys.dylib"
+          path: "target/debug/libdrift_ffi_sys.dylib"
           name: libdrift_ffi_sys.dylib
