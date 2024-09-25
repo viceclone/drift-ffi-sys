@@ -17,8 +17,7 @@ use drift_program::{
         user::{Order, PerpPosition, SpotPosition, User},
     },
 };
-use solana_program::{account_info::IntoAccountInfo, clock::Slot};
-use solana_sdk::{account::Account, pubkey::Pubkey};
+use solana_sdk::{account::Account, account_info::IntoAccountInfo, clock::Slot, pubkey::Pubkey};
 
 use crate::types::{
     compat::{self},
