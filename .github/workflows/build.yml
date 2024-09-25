@@ -24,10 +24,10 @@ jobs:
           rustup default 1.76.0-x86_64-unknown-linux-gnu
       - name: Build Linux
         run: |
-          cargo build
+          cargo build --release
       - uses: actions/upload-artifact@v4
         with:
-          path: "target/debug/libdrift_ffi_sys.so"
+          path: "target/release/libdrift_ffi_sys.so"
           name: libdrift_ffi_sys.so
   publish-mac:
     runs-on: macos-latest
@@ -44,8 +44,8 @@ jobs:
           cargo build
       - name: Build Mac
         run: |
-          cargo build
+          cargo build --release
       - uses: actions/upload-artifact@v4
         with:
-          path: "target/debug/libdrift_ffi_sys.dylib"
+          path: "target/release/libdrift_ffi_sys.dylib"
           name: libdrift_ffi_sys.dylib
