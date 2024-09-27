@@ -87,7 +87,7 @@ pub extern "C" fn math_calculate_margin_requirement_and_total_collateral_and_lia
     let mut oracle_map = OracleMap::load(
         &mut oracle_accounts.iter().peekable(),
         accounts.latest_slot,
-        None,
+        accounts.oracle_guard_rails,
     )
     .unwrap();
 

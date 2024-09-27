@@ -1,7 +1,8 @@
 //! cross-boundary FFI types
 use abi_stable::std_types::RResult;
 use drift_program::{
-    math::margin::MarginRequirementType, state::margin_calculation::MarginContext,
+    math::margin::MarginRequirementType,
+    state::{margin_calculation::MarginContext, state::OracleGuardRails},
 };
 use solana_sdk::{
     account::Account,
@@ -44,11 +45,11 @@ impl<'a> IntoAccountInfo<'a> for &'a mut AccountWithKey {
 
 /// FFI equivalent of an `AccountMap`
 #[repr(C)]
-#[derive(Debug)]
 pub struct AccountsList<'a> {
     pub perp_markets: &'a mut [AccountWithKey],
     pub spot_markets: &'a mut [AccountWithKey],
     pub oracles: &'a mut [AccountWithKey],
+    pub oracle_guard_rails: Option<OracleGuardRails>,
     pub latest_slot: Slot,
 }
 
