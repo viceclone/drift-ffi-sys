@@ -8,7 +8,7 @@ description = "FFI bindings to drift program"
 static = []
 
 [lib]
-crate-type = ["cdylib"]  # default
+crate-type = ["staticlib"]  # default
 
 [target.'cfg(feature = "static")'.lib]
 crate-type = ["staticlib"]
